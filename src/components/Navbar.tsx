@@ -7,7 +7,7 @@ const Navbar = () => (
       <Link href="/">
         <h1 className="text-2xl font-bold text-accent">Pokeapi.co</h1>
       </Link>
-      <Link href="https://github.com/Louis3797/nextjs-pokedex">
+      <Link href="https://github.com/JacquesBonet/pokedex_nextjs_react_query_taildwind">
         <BsGithub className="text-3xl duration-500 ease-in-out hover:text-accent" />
       </Link>
     </div>

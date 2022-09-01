@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/nextjs-pokedex.iml" filepath="$PROJECT_DIR$/.idea/nextjs-pokedex.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/pokedex_nextjs_react_query_taildwind.iml" filepath="$PROJECT_DIR$/.idea/pokedex_nextjs_react_query_taildwind.iml" />
     </modules>
   </component>
 </project>
