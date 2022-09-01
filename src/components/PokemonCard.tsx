@@ -1,5 +1,3 @@
-import { Type } from '@/types'
-import PokemonTypeColor from '@/utils/colors'
 import { IMG_URL } from '@/utils/constants'
 import { readOne } from '@/utils/fetcher'
 import Image from 'next/future/image'
@@ -8,14 +6,11 @@ import { FC } from 'react'
 import { PokemonIcon } from './Icons'
 import { useQuery } from 'react-query'
 import { normalizePokemon } from '@/utils/normalizePokemon'
+import { Card } from "@/components/Card";
+import { CardFooter } from "@/components/CardFooter";
 
-interface PokemonCardProps {
-  url: string
-  index: number
-  [x: string]: any
-}
 
-const PokemonCard: FC<PokemonCardProps> = ({ url, index, ...props }) => {
+const PokemonCard: FC<CardProps> = ({ url, index, ...props }) => {
   const { error, data } = useQuery(['pokemon', url], () => readOne(url))
 
   if (error) return null
@@ -26,12 +21,7 @@ const PokemonCard: FC<PokemonCardProps> = ({ url, index, ...props }) => {
   return (
     <Link href={`pokemon/${name}`} prefetch={false} {...props}>
       <div className="hover:scale-105">
-        <div
-          className="relative flex h-2/3 w-full flex-col items-center justify-center overflow-hidden rounded-t-2xl"
-          style={{
-            background: `linear-gradient(0deg, #fafafa, ${bgColors[0].light})`,
-          }}
-        >
+        <Card bgColors={bgColors}>
           <PokemonIcon className="absolute w-52 fill-primary stroke-0 opacity-25" />
 
           <p
@@ -53,33 +43,9 @@ const PokemonCard: FC<PokemonCardProps> = ({ url, index, ...props }) => {
             className="drop-shadow xl:h-36 xl:w-36 2xl:h-44 2xl:w-44"
             style={{ contentVisibility: 'auto' }}
           />
-        </div>
+        </Card>
 
-        <div className="flex w-full flex-1 flex-col items-center justify-evenly ">
-          <h3 className="text-2xl font-bold capitalize tracking-wide text-secondary">
-            {name}
-          </h3>
-
-          <div className="flex w-full flex-row items-center justify-center gap-4">
-            {types.map((t: Type, idx: number) => {
-              return (
-                <div
-                  key={idx}
-                  style={{
-                    backgroundColor: Object.entries(PokemonTypeColor).filter(
-                      ([key]) => key === t.type.name
-                    )[0][1].medium,
-                  }}
-                  className="rounded-md px-2 py-1"
-                >
-                  <p className="text-xs font-semibold tracking-wide text-primary">
-                    {t.type.name.toUpperCase()}
-                  </p>
-                </div>
-              )
-            })}
-          </div>
-        </div>
+        <CardFooter name={name} types={types} />
       </div>
     </Link>
   )

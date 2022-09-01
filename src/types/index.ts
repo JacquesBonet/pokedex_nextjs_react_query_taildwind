@@ -1,3 +1,8 @@
+export interface ColorVariant {
+  light: string
+  medium: string
+};
+
 export interface ColorProps {
   normal: {
     light: string
@@ -88,6 +93,17 @@ export interface Generation {
   url: string
 }
 
+export interface IVirtualElement {
+  results: never[],
+  next: string | null,
+}
+
+export interface ICardProps {
+  url: string
+  index: number
+  [x: string]: any
+}
+
 export interface IPokemon {
   id: number
   name: string
@@ -99,3 +115,4 @@ export interface IPokemon {
   location_area_encounters: string
   types: Type[]
 }
+
