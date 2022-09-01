@@ -9,9 +9,9 @@ interface IVirtualListProps {
 
 export const VirtualList = ({Element, pages, observe}: IVirtualListProps) => (
   <ul className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-    {pages?.map((page: any) =>
-      page.results?.map((data: any) => {
-        const isLast = !data.next
+    {pages?.map((page: any, idx: number) =>
+      page.results?.map((data: any, jdx: number) => {
+        const isLast = pages.length * page.results.length - (idx + 1) * (jdx + 1) === 0 ? true : false
         const { url } = data
 
         return (

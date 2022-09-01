@@ -14,7 +14,7 @@ export const useInfiniteQuery = ():IPages => {
     getNextPageParam: (lastPage: IPage) => lastPage.next,
   })
   const { observe } = useInView({
-    rootMargin: '300px',
+    rootMargin: '200px',
     onEnter: () => {
       fetchNextPage()
     },

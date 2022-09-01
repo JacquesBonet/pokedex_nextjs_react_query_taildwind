@@ -42,7 +42,6 @@ export interface IPage {
 
 export interface IPages {
   isFetching: boolean,
-  observe: (props: HTMLElement) => void,
   pages: IPage[],
 }
 
