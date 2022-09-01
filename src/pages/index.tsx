@@ -1,7 +1,7 @@
 import React from 'react'
 import PokemonCard from '@/components/PokemonCard'
 import type { NextPage } from 'next'
-import { useInfiniteQuery } from '@/hooks'
+import { useInfiniteQuery } from '@/hooks/useInfiniteQuery'
 import { VirtualList } from "@/components/VirtualList";
 
 const Home: NextPage = () => {

@@ -8,9 +8,10 @@ import { useQuery } from 'react-query'
 import { normalizePokemon } from '@/utils/normalizePokemon'
 import { Card } from "@/components/Card";
 import { CardFooter } from "@/components/CardFooter";
+import { ICardProps } from "@/types";
 
 
-const PokemonCard: FC<CardProps> = ({ url, index, ...props }) => {
+const PokemonCard: FC<ICardProps> = ({ url, index, ...props }) => {
   const { error, data } = useQuery(['pokemon', url], () => readOne(url))
 
   if (error) return null

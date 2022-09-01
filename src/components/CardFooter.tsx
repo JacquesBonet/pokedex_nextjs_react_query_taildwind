@@ -1,20 +1,20 @@
-import { Type } from "@/types";
+import { IType } from "@/types";
 import PokemonTypeColor from "@/utils/colors";
 
-type Props = {
+export interface ICardFooterProps {
   name: string,
-  types: Type[]
+  types: IType[]
 }
 
 
-export const CardFooter = ({name, types}: Props) => (
+export const CardFooter = ({name, types}: ICardFooterProps) => (
   <div className="flex w-full flex-1 flex-col items-center justify-evenly ">
     <h3 className="text-2xl font-bold capitalize tracking-wide text-secondary">
       {name}
     </h3>
 
     <div className="flex w-full flex-row items-center justify-center gap-4">
-      {types.map((t: Type, idx: number) => {
+      {types.map((t: IType, idx: number) => {
         return (
           <div
             key={idx}

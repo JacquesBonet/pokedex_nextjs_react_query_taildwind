@@ -1,13 +1,13 @@
 import { ReactNode } from "react";
-import { ColorVariant } from "@/types";
+import { IColorVariant } from "@/types";
 
 
-type Props = {
-  bgColors: ColorVariant[]
+export interface ICardProps {
+  bgColors: IColorVariant[]
   children: ReactNode
 }
 
-export const Card = ({ bgColors, children}: Props) => (
+export const Card = ({ bgColors, children}: ICardProps) => (
   <div
     className="relative flex h-2/3 w-full flex-col items-center justify-center overflow-hidden rounded-t-2xl"
     style={{

@@ -1,9 +1,9 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import Layout from '@/components/Layout'
 
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query'
 import { useState } from 'react'
+import { Layout } from "@/components/Layout";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const [queryClient] = useState(
@@ -18,7 +18,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   )
 
   return (
-    <>
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
           <Layout>
@@ -26,7 +25,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           </Layout>
         </Hydrate>
       </QueryClientProvider>
-    </>
   )
 }
 

@@ -1,34 +1,28 @@
 import { readList } from '@/utils/fetcher'
 import { useInfiniteQuery as useInfiniteReactQuery } from 'react-query'
 import { useInView } from 'react-cool-inview'
+import { IPage, IPages } from "@/types";
 
-export const useInfiniteQuery = () => {
+export const useInfiniteQuery = ():IPages => {
   const {
     data = {
       pages: [{ results: [], next: null }],
-      pageParam: '',
     },
     fetchNextPage,
-    hasNextPage,
     isFetching,
   } = useInfiniteReactQuery(['pokemons'], readList, {
-    getNextPageParam: (lastPage: any) => lastPage.next,
+    getNextPageParam: (lastPage: IPage) => lastPage.next,
   })
   const { observe } = useInView({
     rootMargin: '300px',
     onEnter: () => {
-      fetchNextPage({ pageParam: data.pageParam })
+      fetchNextPage()
     },
   })
 
   return {
     pages: data.pages,
-    fetchNextPage,
     isFetching,
-    hasNextPage,
     observe,
-    pageParam: data.pages?.length
-      ? data.pages[data.pages.length - 1].next
-      : null,
   }
 }

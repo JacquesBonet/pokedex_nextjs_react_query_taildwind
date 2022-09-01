@@ -1,11 +1,11 @@
-import Navbar from './Navbar'
 import { ReactNode } from 'react'
+import { Navbar } from "@/components/Navbar";
 
-type Props = {
+export interface ILayoutProps {
   children: ReactNode
 }
 
-const Layout = ({ children }: Props) => {
+export const Layout = ({ children }: ILayoutProps) => {
   return (
     <>
       <Navbar />
@@ -14,4 +14,3 @@ const Layout = ({ children }: Props) => {
   )
 }
 
-export default Layout
